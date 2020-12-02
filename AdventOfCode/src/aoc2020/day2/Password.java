@@ -1,7 +1,6 @@
-package aoc2020;
+package aoc2020.day2;
 
 public class Password {
-
     String password;
     int min, max; //minimal and maximal occurence of letter in password to be valid
     char letter;
@@ -16,10 +15,7 @@ public class Password {
 
     public boolean isValidPassword() {
         int occurance = countCharacter(letter);
-        if (occurance >= min && occurance <= max) {
-            return true;
-        }
-        return false;
+        return occurance >= min && occurance <= max;
     }
 
     public int countCharacter(char letter) {
@@ -27,12 +23,8 @@ public class Password {
     }
 
     public boolean isValidPasswordV2() {
-       boolean letterAtMin = password.charAt(min -1) == letter;
-       boolean letterAtMax = password.charAt(max-1) == letter;
-       if (letterAtMin && !letterAtMax || !letterAtMin && letterAtMax) {
-           return true;
-       }
-       return false;
+        boolean letterAtMin = password.charAt(min -1) == letter;
+        boolean letterAtMax = password.charAt(max-1) == letter;
+        return letterAtMin && !letterAtMax || !letterAtMin && letterAtMax;
     }
-
 }
