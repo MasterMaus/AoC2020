@@ -17,11 +17,11 @@ public class Main {
             Scanner scanner = new Scanner(file);
             while(scanner.hasNextLine()) {
                 String temp = scanner.nextLine();
-                String info[] = temp.split("(-|:|\\s)");
+                String info[] = temp.split("(-|: |\\s)");
                 int min = Integer.parseInt(info[0]);
                 int max = Integer.parseInt(info[1]);
                 char letter = info[2].charAt(0);
-                String password = info[4];
+                String password = info[3];
                 Password entry = new Password(password, min, max, letter);
                 passwordList.add(entry);
                 //process the input file here
