@@ -14,8 +14,7 @@ public class Day4 {
         input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
             if (s.isEmpty()) {
-                data.add(new Passport(entry)); //todo figure out to also add last entry
-                //System.out.println(entry);
+                data.add(new Passport(entry));
                 entry = s;
             } else {
                 entry = entry.concat(s).concat(" ");
