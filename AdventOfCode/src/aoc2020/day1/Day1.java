@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Day1 {
 
     public static void run() {
+        System.out.println("Solutions day 1:");
         ArrayList<Integer> expenses = new ArrayList<>();
         File input = new File("day1.txt");
         for(String i : Util.readFile(input)){

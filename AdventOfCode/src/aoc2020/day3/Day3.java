@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Day3 {
     public static void run() {
+        System.out.println("Solutions day 3:");
         File file = new File("day3.txt");
         ArrayList<ArrayList<Boolean>> forest = new ArrayList<>(); //keep track of the processed objects
         ArrayList<String> input = Util.readFile(file);

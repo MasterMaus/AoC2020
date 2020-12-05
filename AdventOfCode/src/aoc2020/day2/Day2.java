@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Day2 {
     public static void run() {
+        System.out.println("Solutions day 2:");
         File file = new File("day2.txt");
         ArrayList<Password> passwordList = new ArrayList<>();
         ArrayList<String> input = Util.readFile(file);

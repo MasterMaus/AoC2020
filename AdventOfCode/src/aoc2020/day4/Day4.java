@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Day4 {
     public static void run() {
+        System.out.println("Solutions day 4:");
         String entry = "";
         File file = new File("day4.txt");
         ArrayList<Passport> data = new ArrayList<>();
