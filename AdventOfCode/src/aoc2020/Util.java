@@ -14,6 +14,7 @@ public class Util {
             while(scanner.hasNextLine()) {
                 res.add(scanner.nextLine());
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;

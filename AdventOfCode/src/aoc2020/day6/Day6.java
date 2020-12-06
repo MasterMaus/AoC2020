@@ -3,18 +3,57 @@ package aoc2020.day6;
 import aoc2020.Util;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Day6 {
     public static void run() {
         System.out.println("Solutions day 6:");
+        String entry = "";
         File file = new File("day6.txt");
-        ArrayList<String/*NewObject*/> newObjectList = new ArrayList<>(); //keep track of the processed objects
+        int uniqueAnswers = 0;
+        int sameAnswers = 0;
         ArrayList<String> input = Util.readFile(file);
+        input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
-            //process the input file into whatever we need
+            if (s.isEmpty()) {
+                uniqueAnswers += calculateUniqueAnswers(entry);
+                sameAnswers += calculateSameAnswers(entry);
+                entry = s;
+            } else {
+                entry = entry.concat(s).concat(" ");
+            }
         }
         int res = 0; // STORE RESULT
-        System.out.println(res); //OUTPUT RESULT
+        System.out.println("sum of unique answers per group: " + uniqueAnswers); //OUTPUT RESULT
+        System.out.println("sum of common answers per group: " + sameAnswers);
+    }
+
+    public static int calculateUniqueAnswers(String s) {
+        int res = 0;
+        for(char c = 'a'; c<='z'; c++) {
+            if(s.indexOf(c) >= 0) {
+                res++;
+            }
+        }
+        return res;
+    }
+
+    public static int calculateSameAnswers(String s) {
+        int res = 0;
+        String[] group = s.split(" ");
+        for(char c = 'a'; c<='z'; c++) {
+            boolean charStillCommon = true;
+            for (String q : group) {
+                if(q.indexOf(c) < 0) {
+                    charStillCommon = false;
+                    break;
+                }
+            }
+            if (charStillCommon) {
+                res ++;
+            }
+        }
+        return res;
     }
 }
