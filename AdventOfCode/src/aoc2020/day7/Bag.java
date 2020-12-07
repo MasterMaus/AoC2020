@@ -87,10 +87,10 @@ public class Bag {
     }
 
     public int amountOfBags() {
-        int res = 1;
+        int res = 0;
         for(Bag child : childs.keySet()) {
             int quantity = getQuantity(child);
-            res += (quantity * child.amountOfBags());
+            res += quantity + (quantity * child.amountOfBags());
         }
         return res;
     }
