@@ -31,7 +31,7 @@ public class Day2 {
             }
         }
 
-        System.out.println(countV1 + "amount of passwords satisfy the conditions of the first ruleset");
-        System.out.println(countV2 + "amount of passwords satisfy the conditions of the second ruleset");
+        System.out.println(countV1 + " passwords satisfy the conditions of the first ruleset");
+        System.out.println(countV2 + " passwords satisfy the conditions of the second ruleset");
     }
 }

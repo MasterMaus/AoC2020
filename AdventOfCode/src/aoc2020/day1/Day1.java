@@ -9,39 +9,41 @@ public class Day1 {
 
     public static void run() {
         System.out.println("Solutions day 1:");
-        ArrayList<Integer> expenses = new ArrayList<>();
+        int[] sortedExpenses = new int[2021];
         File input = new File("day1.txt");
-        for(String i : Util.readFile(input)){
-            expenses.add(Integer.parseInt(i));
+        for(String s : Util.readFile(input)){
+            int i = Integer.parseInt(s);
+            sortedExpenses[i] = i;
         }
-        int[] sum = findSum2Val(expenses, 2020);
-        System.out.println("sum = " + sum[0] + " + " + sum [1] + ", its product = "+ sum[0] * sum[1]);
-        sum = findSum3Val(expenses, 2020);
-        System.out.println("sum = " + sum[0] + " + " + sum [1] + " + " + sum [2] + ", its product = "+ sum[0] * sum[1] * sum[2]);
+        int target = 2020;
+        int a, b;
+        findSum2Val(sortedExpenses, target);
+        findSum3Val(sortedExpenses, target);
     }
 
-    private static int[] findSum2Val(ArrayList<Integer> input, int target) {
-        for(int i : input) {
-            for(int j : input) {
-               if(i+j == target) {
-                   return new int[]{i, j};
-               }
+    private static void findSum2Val(int[] input, int target) { //4ms
+        for(int a : input) {
+            if(input[a] != 0) {
+                if (input[target - a] == target - a) {
+                    System.out.println("sum = " + a + " + " + (target-a) + ", its product = "+ a * (target-a));
+                    return;
+                }
             }
         }
-        return null;
-
     }
 
-    private static int[] findSum3Val(ArrayList<Integer> input, int target) {
-        for(int i : input) {
-            for(int j : input) {
-                for (int k : input) {
-                    if(i+j+k == target) {
-                        return new int[]{i, j, k};
+    private static void findSum3Val(int[] input, int target) { //11ms
+        for(int a : input) {
+            if(input[a] != 0){
+                for(int b : input) {
+                    if(input[b] != 0) {
+                        if (input[target - a] == target - a) {
+                            System.out.println("sum = " + a + " + " + b + " + " + (target-a-b) + ", its product = "+ a*b*(target-a-b));
+                            return;
+                        }
                     }
                 }
             }
         }
-        return null;
     }
 }
