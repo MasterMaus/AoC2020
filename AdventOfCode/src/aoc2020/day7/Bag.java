@@ -1,12 +1,12 @@
 package aoc2020.day7;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Bag {
 
-    private ArrayList<Bag> parents = new ArrayList<>();
-    private ArrayList<Bag> childs = new ArrayList<>();
+    private HashSet<Bag> parents = new HashSet<>();
+    private HashSet<Bag> childs = new HashSet<>();
     private String id;
 
     public Bag(String id, Bag parent) {
@@ -39,7 +39,7 @@ public class Bag {
         return false;
     }
 
-    static public Bag getFromList(ArrayList<Bag> list, String id) {
+    static public Bag getFromList(HashSet<Bag> list, String id) {
 
         for(Bag b : list) {
             if(id.equals(b.getId())) {
@@ -54,8 +54,8 @@ public class Bag {
         return "Bag with ID: " + getId();
     }
 
-    public ArrayList<Bag> getAllParents() {
-        ArrayList<Bag> res = new ArrayList<Bag>();
+    public HashSet<Bag> getAllParents() {
+        HashSet<Bag> res = new HashSet<Bag>();
         res.addAll(parents);
         for(Bag parent : parents) {
             res.addAll(parent.getAllParents());
@@ -63,7 +63,20 @@ public class Bag {
         return res;
     }
 
-    public ArrayList<Bag> getParents() {
+    public HashSet<Bag> getParents() {
         return parents;
+    }
+
+    public HashSet<Bag> getChilds() {
+        return childs;
+    }
+
+    public HashSet<Bag> getAllsChilds() {
+        HashSet<Bag> res = new HashSet<Bag>();
+        res.addAll(childs);
+        for(Bag child : childs) {
+            res.addAll(child.getAllParents());
+        }
+        return res;
     }
 }
