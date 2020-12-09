@@ -21,4 +21,65 @@ public class Util {
         }
         return res;
     }
+
+    public static long getMax(long[] input) {
+        long res = input[0];
+        for(long l : input) {
+            if (l>res) {
+                res = l;
+            }
+        }
+        return res;
+    }
+
+    public static long getMin(long[] input) {
+        long res = input[0];
+        for(long l : input) {
+            if (l<res) {
+                res = l;
+            }
+        }
+        return res;
+    }
+
+    public static int getMax(int[] input) {
+        int res = input[0];
+        for(int i : input) {
+            if (i>res) {
+                res = i;
+            }
+        }
+        return res;
+    }
+
+    public static int getMin(int[] input) {
+        int res = input[0];
+        for(int i : input) {
+            if (i<res) {
+                res = i;
+            }
+        }
+        return res;
+    }
+
+    public static int getMax(ArrayList<Integer> input) {
+        int res = input.get(0);
+        for(int i : input) {
+            if (i>res) {
+                res = i;
+            }
+        }
+        return res;
+    }
+
+    public static int getMin(ArrayList<Integer> input) {
+        int res = input.get(0);
+        for(int i : input) {
+            if (i<res) {
+                res = i;
+            }
+        }
+        return res;
+    }
+
 }

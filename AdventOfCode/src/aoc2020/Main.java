@@ -43,13 +43,13 @@ public class Main {
 //        Day7.run(); //run day7
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
-        start = System.currentTimeMillis();
-        Day8.run(); //run day8
-        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
-//
 //        start = System.currentTimeMillis();
-//        Day9.run(); //run day9
+//        Day8.run(); //run day8
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
+//
+        start = System.currentTimeMillis();
+        Day9.run(); //run day9
+        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
 //        Day10.run(); //run day10

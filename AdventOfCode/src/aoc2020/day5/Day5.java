@@ -23,16 +23,8 @@ public class Day5 {
             //process the input file into whatever we need
         }
 
-        int max = 0; // STORE RESULT
-        int min = 0x3ff; // 0b1111111111, highest seat id possible with this boarding pass
-        for(int i : data) {
-            if(i>max) {
-                max = i;
-            }
-            if(i<min) {
-                min = i;
-            }
-        }
+        int min = Util.getMin(data);
+        int max = Util.getMax(data);
         System.out.println("highest seat id: " + max); //highest seat number
         System.out.println("lowest seat id: "+ min); //lowest seat number
         int id = -1;
