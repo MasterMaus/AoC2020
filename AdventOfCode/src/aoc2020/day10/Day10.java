@@ -15,7 +15,11 @@ public class Day10 {
         for (String s: input) {
             data.add(Integer.parseInt(s));
         }
+        data.add(0);
         int totalJolts = Util.getMax(data)+3;
+
+        long res = calculateCombinations(data, totalJolts);
+        System.out.println(res);
 
         // TODO recursively calculate all ways from node 0 to node end
 
@@ -43,6 +47,23 @@ public class Day10 {
         }
         currentJolts +=3;
         System.out.println(dif1 * dif3); //OUTPUT RESULT
+    }
+
+    private static long calculateCombinations(HashSet<Integer> input, int node) {
+        long res = 0;
+        if(node == 0) {
+            return 1;
+        }
+        if(input.contains(node-1)) {
+            res += calculateCombinations(input, node-1);
+        }
+        if (input.contains(node-2)) {
+            res += calculateCombinations(input, node-2);
+        }
+        if (input.contains(node-3)) {
+            res += calculateCombinations(input, node-3);
+        }
+        return res;
     }
 }
 
