@@ -3,6 +3,8 @@ package aoc2020;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Util {
@@ -62,24 +64,12 @@ public class Util {
         return res;
     }
 
-    public static int getMax(ArrayList<Integer> input) {
-        int res = input.get(0);
-        for(int i : input) {
-            if (i>res) {
-                res = i;
-            }
-        }
-        return res;
+    public static int getMax(Collection<Integer> input) {
+        return Collections.max(input);
     }
 
-    public static int getMin(ArrayList<Integer> input) {
-        int res = input.get(0);
-        for(int i : input) {
-            if (i<res) {
-                res = i;
-            }
-        }
-        return res;
+    public static int getMin(Collection<Integer> input) {
+        return Collections.min(input);
     }
 
 }
