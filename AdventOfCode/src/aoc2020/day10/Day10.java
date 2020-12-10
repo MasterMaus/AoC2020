@@ -4,32 +4,33 @@ import aoc2020.Util;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Day10 {
     public static void run() {
         System.out.println("Solutions day 10:");
         File file = new File("day10.txt");
-        HashSet<Integer> data = new HashSet<>(); //keep track of the processed objects
+        TreeSet<Integer> data = new TreeSet<>(); //keep track of the processed objects
         ArrayList<String> input = Util.readFile(file);
         for (String s: input) {
             data.add(Integer.parseInt(s));
         }
         data.add(0);
         int totalJolts = Util.getMax(data)+3;
+        HashMap<Integer, Long> combinations = new HashMap<>();
 
-        long res = calculateCombinations(data, totalJolts);
-        System.out.println(res);
-
-        // TODO recursively calculate all ways from node 0 to node end
-
+        for (int i : data) {
+            calculateCombinations(combinations, i);
+        }
+        System.out.println("SOLUTION = " + combinations.get(totalJolts-3));
     }
 
     private static void part1(HashSet<Integer> data) {
         int dif1 = 0;
         int dif3 = 1;
         int currentJolts = 0;
-        long combinations = 1;
 
         for(int i = 0; i<data.size(); i++) {
             if(data.contains(currentJolts + 1)) {
@@ -49,21 +50,22 @@ public class Day10 {
         System.out.println(dif1 * dif3); //OUTPUT RESULT
     }
 
-    private static long calculateCombinations(HashSet<Integer> input, int node) {
-        long res = 0;
+    private static void calculateCombinations(HashMap<Integer, Long> combinations, int node) {
         if(node == 0) {
-            return 1;
+            combinations.put(0, (long) 1);
+        } else {
+            long val = 0;
+            if(combinations.containsKey(node-1)) {
+                val += combinations.get(node-1);
+            }
+            if(combinations.containsKey(node-2)) {
+                val += combinations.get(node-2);
+            }
+            if(combinations.containsKey(node-3)) {
+                val += combinations.get(node-3);
+            }
+            combinations.put(node, val);
         }
-        if(input.contains(node-1)) {
-            res += calculateCombinations(input, node-1);
-        }
-        if (input.contains(node-2)) {
-            res += calculateCombinations(input, node-2);
-        }
-        if (input.contains(node-3)) {
-            res += calculateCombinations(input, node-3);
-        }
-        return res;
     }
 }
 
