@@ -9,20 +9,18 @@ import java.util.HashSet;
 
 public class Chair {
 
-    int location[];
-    HashSet<Chair> neighborChairs = new HashSet<>();
-    boolean occupied;
+    private int location[];
+    private HashSet<Chair> neighborChairs;
+    private boolean occupied;
 
-    public Chair(int[] location, HashMap<int[], Chair> hall) {
+    public Chair(int[] location, HashSet<Chair> seats) {
         this.location = location;
         occupied = false;
-        for (int[] neighborsLoc : getNeighborLocations(location)) {
-            Chair neighbor = hall.get(neighborsLoc);
-            if(neighbor != null) {
-                addNeighbor(neighbor); // add neighbor to the set of neighbors
-                neighbor.addNeighbor((this)); // add this object to its set of neighbors
-            }
+        neighborChairs = getNeighbors(location, seats);
+        for(Chair c : neighborChairs) {
+            c.addNeighbor(this);
         }
+
     }
 
     public int[] getLocation() {
@@ -35,6 +33,9 @@ public class Chair {
 
     public void addNeighbor(Chair chair) {
         neighborChairs.add(chair);
+        if(!chair.hasNeighbor(this)) {
+            chair.addNeighbor(this);
+        }
     }
 
     public void swapOccupation() {
@@ -47,13 +48,17 @@ public class Chair {
 
     public int neighborsOccupied() {
         int res = 0;
-        System.out.println("amount of neighbors: " + neighborChairs.size());
+        //System.out.println("amount of neighbors: " + neighborChairs.size());
         for(Chair neighbor : neighborChairs) {
             if (neighbor.isOccupied()) {
                 res ++;
             }
         }
         return res;
+    }
+
+    public int amountOfNeighbors() {
+        return neighborChairs.size();
     }
 
 
@@ -83,14 +88,27 @@ public class Chair {
         }
     }
 
-    public static ArrayList<int[]> getNeighborLocations(int[] loc) {
-        ArrayList<int[]> res = new ArrayList<>();
+    public static HashSet<Chair> getNeighbors(int[] loc, HashSet<Chair> seats) {
+        HashSet<Chair> res = new HashSet<>();
         for(int x = loc[0]-1; x<=loc[0]+1; x++) {
             for(int y = loc[1]-1; y<=loc[1]+1; y++) {
                 int[] neighborLoc = {x, y};
                 if (!Arrays.equals(loc, neighborLoc)) {
-                    res.add(neighborLoc);
+                    Chair c = getChairWithLocation(neighborLoc, seats);
+                    if(c!=null) {
+                        res.add(c);
+                    }
                 }
+            }
+        }
+        return res;
+    }
+
+    private static Chair getChairWithLocation(int[] loc, HashSet<Chair> seats) {
+        Chair res = null;
+        for(Chair c : seats) {
+            if (Arrays.equals(loc, c.getLocation())) {
+                return c;
             }
         }
         return res;
