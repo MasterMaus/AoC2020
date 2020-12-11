@@ -10,7 +10,7 @@ import java.util.HashSet;
 
 public class Day11 {
     public static void run() {
-        File file = new File("day11_2.txt");
+        File file = new File("day11.txt");
         //HashMap<int[], Chair> hall = new HashMap<>(); //keep track of the processed objects
         HashSet<Chair> seats = new HashSet<Chair>();
         ArrayList<String> input = Util.readFile(file);
@@ -25,11 +25,21 @@ public class Day11 {
             }
         }
 
-        int res = 0;
-        for (int i = 0; i < 3; i++) {
-            System.out.println(i + ": " + simulationRound(seats));
-
+        while (simulationRound(seats) != 0) {
         }
+
+        int res = 0;
+        for(Chair c : seats) {
+            if (c.isOccupied()) {
+                res++;
+            }
+        }
+        System.out.println(res);
+
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(i + ": " + simulationRound(seats));
+//
+//        }
     }
 
     private static int simulationRound(HashSet<Chair> seats) {
@@ -39,17 +49,15 @@ public class Day11 {
                 if(c.neighborsOccupied() >= 4) {
                     changeList.add(c);
                 }
-            } else { // no one is sitting in the seat, swap occupation state if there are not yet 4 or more neighbors
-                if(c.neighborsOccupied() < 4) {
+            } else { // no one is sitting in the seat, swap occupation state if there are all its neighbors are empty seats as well
+                if(c.neighborsOccupied() == 0) {
                     changeList.add(c);
                 }
             }
         }
 
         for (Chair c : changeList) {
-            System.out.println(c);
             c.swapOccupation();
-            System.out.println(c);
         }
 
         return changeList.size();
