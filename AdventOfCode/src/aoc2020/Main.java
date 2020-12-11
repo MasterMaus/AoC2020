@@ -61,13 +61,13 @@ public class Main {
 //        Day10.run(); //run day10
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
-        start = System.currentTimeMillis();
-        Day11.run(); //run day11
-        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
-//
 //        start = System.currentTimeMillis();
-//        Day12.run(); //run day12
+//        Day11.run(); //run day11
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
+//
+        start = System.currentTimeMillis();
+        Day12.run(); //run day12
+        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
 //        Day13.run(); //run day13
