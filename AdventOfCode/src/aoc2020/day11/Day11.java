@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 public class Day11 {
     public static void run() {
-        File file = new File("day11_2.txt");
+        File file = new File("day11.txt");
         //HashMap<int[], Chair> hall = new HashMap<>(); //keep track of the processed objects
         HashSet<Chair> seats = new HashSet<>();
         ArrayList<String> input = Util.readFile(file);
@@ -26,42 +26,23 @@ public class Day11 {
             }
         }
 
+        for(Chair c: seats) {
+            c.update();
+        }
+
 
         int i = 0;
         while (simulationRoundV2(seats) != 0) {
-            i++;
-            int res = 0;
-            for(Chair c : seats) {
-//            System.out.println(c);
-//            System.out.println(c.getChairsInSight().size());
-                if (c.isOccupied()) {
-                    res++;
-                }
-            }
-            System.out.println(res);
-
-            if(i==2) {
-                for(Chair c : seats) {
-                    //System.out.println(c);
-                }
-                break;
-            }
-
+            System.out.println(++i);
         }
 
-        Chair test = Chair.getChairWithLocation(new int[] {6,0}, seats);
-        HashSet<Chair> testSet = test.getChairsInSight();
-        for (Chair c : testSet) {
-            System.out.println(c);
+        int res = 0;
+        for(Chair c : seats) {
+            if (c.isOccupied()) {
+                res++;
+            }
         }
-
-//        int res = 0;
-//        for(Chair c : seats) {
-//            if (c.isOccupied()) {
-//                res++;
-//            }
-//        }
-//        System.out.println("ANTWOORD: " + res);
+        System.out.println("ANTWOORD: " + res);
     }
 
     private static int simulationRoundV1(HashSet<Chair> seats) {
@@ -88,14 +69,13 @@ public class Day11 {
     private static int simulationRoundV2(HashSet<Chair> seats) {
         HashSet<Chair> changeList = new HashSet<>();
         for(Chair c: seats) {
-            HashSet<Chair> adjacent = c.getChairsInSight();
             if(c.isOccupied()) { //someone is sitting, swap occupation on rule
-                if(Chair.adjacentOccupied(adjacent) >= 5) {
+                if(Chair.adjacentOccupied(c.getAdjacentChairs()) >= 5) {
                     changeList.add(c);
                 }
 
             } else { //chair is empty, swap occupation state if all neighbor seats are empty as well
-                if (Chair.adjacentOccupied(adjacent) == 0) {
+                if (Chair.adjacentOccupied(c.getAdjacentChairs()) == 0) {
                     changeList.add(c);
                 }
             }

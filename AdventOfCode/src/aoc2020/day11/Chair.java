@@ -13,6 +13,7 @@ public class Chair {
     private int[] grid;
 
     private HashSet<Chair> allChairs;
+    private HashSet<Chair> adjacentChairs;
     private HashSet<Chair> neighborChairs;
     private boolean occupied;
 
@@ -26,6 +27,14 @@ public class Chair {
             c.addNeighbor(this);
         }
 
+    }
+
+    public void update() {
+        adjacentChairs = getChairsInSight();
+    }
+
+    public HashSet<Chair> getAdjacentChairs() {
+        return adjacentChairs;
     }
 
     public int[] getLocation() {
@@ -92,27 +101,27 @@ public class Chair {
         int max_y = grid[1];
         Chair res = null;
         if (direction == 0) { //UP
-            for (int i = 0; i < y; i++) {
+            for (int i = y-1; i >= 0; i--) {
                 res = getChairWithLocation(new int[]{x, i}, allChairs);
                 if (res != null) {
                     return res;
                 }
             }
         } else if (direction == 1) { //DOWN
-            for (int i = max_y; i > y; i--) {
+            for (int i = y+1; i <= max_y; i++) {
                 res = getChairWithLocation(new int[]{x, i}, allChairs);
                 if (res != null) {
                     return res;               }
             }
         } else if (direction == 2) { //LEFT
-            for (int i = 0; i < x; i++) {
+            for (int i = x-1; i >= 0; i--) {
                 res = getChairWithLocation(new int[]{i, y}, allChairs);
                 if (res != null) {
                     return res;
                 }
             }
         } else if (direction == 3) {//RIGHT
-            for (int i = max_x; i > x; i--) {
+            for (int i = x+1; i <= max_x; i++) {
                 res = getChairWithLocation(new int[]{i, y}, allChairs);
                 if (res != null) {
                     return res;
