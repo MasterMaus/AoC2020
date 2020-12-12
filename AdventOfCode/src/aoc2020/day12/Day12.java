@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Day12 {
     public static void run() {
-        ArrayList<String> input = InputLoader.asList("day12.txt");
+        ArrayList<String> input = InputLoader.asList("input/day12.txt");
         System.out.print("solution part 1: ");
         part1(input);
         System.out.print("solution part 2: ");

@@ -15,7 +15,7 @@ public class Day8 {
         int j = 0;
         System.out.println("Solutions day 8:");
         File file = new File("day8.txt");
-        ArrayList<String> input = InputLoader.asList("day8.txt");
+        ArrayList<String> input = InputLoader.asList("input/day8.txt");
         runInstructionSet(input);
         int res1 = accumulator;
 

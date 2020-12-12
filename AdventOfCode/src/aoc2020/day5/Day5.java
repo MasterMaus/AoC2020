@@ -9,7 +9,7 @@ public class Day5 {
     public static void run() {
         System.out.println("Solutions day 5:");
         ArrayList<Integer> data = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = InputLoader.asList("day5.txt");
+        ArrayList<String> input = InputLoader.asList("input/day5.txt");
         for (String s: input) {
             int entry;
             s = s.replace('F', '0');

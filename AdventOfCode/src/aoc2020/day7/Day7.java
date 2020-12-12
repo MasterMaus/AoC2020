@@ -9,7 +9,7 @@ public class Day7 {
     public static void run() {
         System.out.println("Solutions day 7:");
         HashSet<Bag> newObjectList = new HashSet<>(); //keep track of the processed objects
-        ArrayList<String> input = InputLoader.asList("day7.txt");
+        ArrayList<String> input = InputLoader.asList("input/day7.txt");
         for (String s: input) {
             //split string in the parent and childs. but first make the string as: parent,#child,#child
             s = s.replace("bags contain no other bags.","");

@@ -9,7 +9,7 @@ public class Day4 {
         System.out.println("Solutions day 4:");
         String entry = "";
         ArrayList<Passport> data = new ArrayList<>();
-        ArrayList<String> input = InputLoader.asList("day4.txt");
+        ArrayList<String> input = InputLoader.asList("input/day4.txt");
         input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
             if (s.isEmpty()) {

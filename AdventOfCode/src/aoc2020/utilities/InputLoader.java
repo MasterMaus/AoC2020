@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class InputLoader {
 
-    public static ArrayList<String> asList(String filename) {
+    public static ArrayList<String> asList(String filepath) {
         ArrayList<String> output = new ArrayList<>();
-        File file = new File(filename);
+        File file = new File(filepath);
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
@@ -24,9 +24,9 @@ public class InputLoader {
         return output;
     }
 
-    public static String asString(String filename) {
+    public static String asString(String filepath) {
         String output = new String();
-        File file = new File(filename);
+        File file = new File(filepath);
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 output.concat(scanner.nextLine());

@@ -8,7 +8,7 @@ public class Day3 {
     public static void run() {
         System.out.println("Solutions day 3:");
         ArrayList<ArrayList<Boolean>> forest = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = InputLoader.asList("day3.txt");
+        ArrayList<String> input = InputLoader.asList("input/day3.txt");
         for (String s: input) {
             ArrayList<Boolean> entry = new ArrayList<>();
             for(char c : s.toCharArray()) {

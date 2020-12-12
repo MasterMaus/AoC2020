@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Day9 {
     public static void run() {
         System.out.println("Solutions day 9:");
-        ArrayList<String> input = InputLoader.asList("day9.txt");
+        ArrayList<String> input = InputLoader.asList("input/day9.txt");
         long[] data = new long[input.size()];
         for (int i = 0; i < input.size(); i++) {
             data[i] = Long.parseLong(input.get(i));

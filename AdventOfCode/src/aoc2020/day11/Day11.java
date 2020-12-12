@@ -10,7 +10,7 @@ import java.util.HashSet;
 public class Day11 {
     public static void run() {
         HashSet<Chair> seats = new HashSet<>();
-        ArrayList<String> input = InputLoader.asList("day11.txt");
+        ArrayList<String> input = InputLoader.asList("input/day11.txt");
         int[] grid = {input.get(0).length(), input.size()};
         for (int y = 0; y < input.size(); y++) {
             String s = input.get(y);

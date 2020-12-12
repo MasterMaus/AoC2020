@@ -10,7 +10,7 @@ public class Day6 {
         String entry = "";
         int uniqueAnswers = 0;
         int sameAnswers = 0;
-        ArrayList<String> input = InputLoader.asList("day6.txt");
+        ArrayList<String> input = InputLoader.asList("input/day6.txt");
         input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
             if (s.isEmpty()) {

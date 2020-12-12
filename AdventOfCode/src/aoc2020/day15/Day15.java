@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Day15 {
     public static void run() {
         ArrayList<String/*NewObject*/> newObjectList = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = InputLoader.asList("day15.txt");
+        ArrayList<String> input = InputLoader.asList("input/day15.txt");
         for (String s: input) {
             //process the input file into whatever we need
         }

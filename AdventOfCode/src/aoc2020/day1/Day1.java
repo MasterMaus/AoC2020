@@ -9,7 +9,7 @@ public class Day1 {
     public static void run() {
         System.out.println("Solutions day 1:");
         int[] sortedExpenses = new int[2021];
-        ArrayList<String> input = InputLoader.asList("day1.txt");
+        ArrayList<String> input = InputLoader.asList("input/day1.txt");
         for(String s : input){
             int i = Integer.parseInt(s);
             sortedExpenses[i] = i;

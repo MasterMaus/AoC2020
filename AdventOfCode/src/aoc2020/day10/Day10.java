@@ -12,7 +12,7 @@ public class Day10 {
     public static void run() {
         System.out.println("Solutions day 10:");
         TreeSet<Integer> data = new TreeSet<>(); //keep track of the processed objects
-        ArrayList<String> input = InputLoader.asList("day10.txt");
+        ArrayList<String> input = InputLoader.asList("input/day10.txt");
         for (String s: input) {
             data.add(Integer.parseInt(s));
         }
