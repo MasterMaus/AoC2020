@@ -1,17 +1,15 @@
 package aoc2020.day7;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Day7 {
     public static void run() {
         System.out.println("Solutions day 7:");
-        File file = new File("day7.txt");
         HashSet<Bag> newObjectList = new HashSet<>(); //keep track of the processed objects
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day7.txt");
         for (String s: input) {
             //split string in the parent and childs. but first make the string as: parent,#child,#child
             s = s.replace("bags contain no other bags.","");

@@ -1,19 +1,16 @@
 package aoc2020.day6;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Day6 {
     public static void run() {
         System.out.println("Solutions day 6:");
         String entry = "";
-        File file = new File("day6.txt");
         int uniqueAnswers = 0;
         int sameAnswers = 0;
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day6.txt");
         input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
             if (s.isEmpty()) {

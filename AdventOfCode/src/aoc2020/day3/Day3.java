@@ -1,16 +1,14 @@
 package aoc2020.day3;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day3 {
     public static void run() {
         System.out.println("Solutions day 3:");
-        File file = new File("day3.txt");
         ArrayList<ArrayList<Boolean>> forest = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day3.txt");
         for (String s: input) {
             ArrayList<Boolean> entry = new ArrayList<>();
             for(char c : s.toCharArray()) {

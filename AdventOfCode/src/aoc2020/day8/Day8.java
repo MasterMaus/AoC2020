@@ -1,6 +1,7 @@
 package aoc2020.day8;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Day8 {
         int j = 0;
         System.out.println("Solutions day 8:");
         File file = new File("day8.txt");
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day8.txt");
         runInstructionSet(input);
         int res1 = accumulator;
 

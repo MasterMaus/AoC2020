@@ -1,14 +1,13 @@
 package aoc2020.day12;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day12 {
     public static void run() {
-        File file = new File("day12.txt");
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day12.txt");
         System.out.print("solution part 1: ");
         part1(input);
         System.out.print("solution part 2: ");
@@ -50,7 +49,7 @@ public class Day12 {
                 }
             }
         }
-        System.out.println(Util.getManhattanDistance(x,y)); //OUTPUT RESULT
+        System.out.println(CommonFunctions.getManhattanDistance(x,y)); //OUTPUT RESULT
     }
 
     private static void part2(ArrayList<String> input) {
@@ -115,8 +114,6 @@ public class Day12 {
                 waypoint[1] = y;
             }
         }
-
-        System.out.println(Util.getManhattanDistance(ship[0], ship[1]));
-
+        System.out.println(CommonFunctions.getManhattanDistance(ship[0], ship[1]));
     }
 }

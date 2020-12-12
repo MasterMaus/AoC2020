@@ -1,15 +1,13 @@
 package aoc2020.day15;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day15 {
     public static void run() {
-        File file = new File("day15.txt");
         ArrayList<String/*NewObject*/> newObjectList = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day15.txt");
         for (String s: input) {
             //process the input file into whatever we need
         }

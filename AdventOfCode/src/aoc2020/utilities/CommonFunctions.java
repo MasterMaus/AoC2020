@@ -1,4 +1,4 @@
-package aoc2020;
+package aoc2020.utilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,23 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Util {
-
-    // read file into
-    public static ArrayList<String> readFile(File file) {
-        ArrayList<String> res = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine()) {
-                res.add(scanner.nextLine());
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return res;
-    }
+public class CommonFunctions {
 
     // get min/ max values from array or collection
     public static long getMax(long[] input) {

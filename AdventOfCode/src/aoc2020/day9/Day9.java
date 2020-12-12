@@ -1,15 +1,14 @@
 package aoc2020.day9;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day9 {
     public static void run() {
         System.out.println("Solutions day 9:");
-        File file = new File("day9.txt");
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day9.txt");
         long[] data = new long[input.size()];
         for (int i = 0; i < input.size(); i++) {
             data[i] = Long.parseLong(input.get(i));
@@ -56,7 +55,7 @@ public class Day9 {
             if (sum == target) {
                 long[] set = new long[j-i];
                 System.arraycopy(input, i, set, 0, j-i);
-                return Util.getMin(set) + Util.getMax(set);
+                return CommonFunctions.getMin(set) + CommonFunctions.getMax(set);
             }
         }
 

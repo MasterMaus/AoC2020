@@ -1,8 +1,8 @@
 package aoc2020.day10;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,14 +11,13 @@ import java.util.TreeSet;
 public class Day10 {
     public static void run() {
         System.out.println("Solutions day 10:");
-        File file = new File("day10.txt");
         TreeSet<Integer> data = new TreeSet<>(); //keep track of the processed objects
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day10.txt");
         for (String s: input) {
             data.add(Integer.parseInt(s));
         }
         data.add(0);
-        int totalJolts = Util.getMax(data)+3;
+        int totalJolts = CommonFunctions.getMax(data)+3;
         HashMap<Integer, Long> combinations = new HashMap<>();
 
         for (int i : data) {

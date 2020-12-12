@@ -1,17 +1,15 @@
 package aoc2020.day4;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day4 {
     public static void run() {
         System.out.println("Solutions day 4:");
         String entry = "";
-        File file = new File("day4.txt");
         ArrayList<Passport> data = new ArrayList<>();
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day4.txt");
         input.add(""); // add empty line to the input so that our last entry will be added in the data list
         for (String s: input) {
             if (s.isEmpty()) {

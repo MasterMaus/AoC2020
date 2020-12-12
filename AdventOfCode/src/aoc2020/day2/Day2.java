@@ -1,15 +1,14 @@
 package aoc2020.day2;
 
-import aoc2020.Util;
-import java.io.File;
+import aoc2020.utilities.InputLoader;
+
 import java.util.ArrayList;
 
 public class Day2 {
     public static void run() {
         System.out.println("Solutions day 2:");
-        File file = new File("day2.txt");
         ArrayList<Password> passwordList = new ArrayList<>();
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day2.txt");
         for(String i: input) {
             String[] entry = i.split("(-|: |\\s)");
             int min = Integer.parseInt(entry[0]);

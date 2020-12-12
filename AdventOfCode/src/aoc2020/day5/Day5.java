@@ -1,16 +1,15 @@
 package aoc2020.day5;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day5 {
     public static void run() {
         System.out.println("Solutions day 5:");
-        File file = new File("day5.txt");
         ArrayList<Integer> data = new ArrayList<>(); //keep track of the processed objects
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day5.txt");
         for (String s: input) {
             int entry;
             s = s.replace('F', '0');
@@ -23,8 +22,8 @@ public class Day5 {
             //process the input file into whatever we need
         }
 
-        int min = Util.getMin(data);
-        int max = Util.getMax(data);
+        int min = CommonFunctions.getMin(data);
+        int max = CommonFunctions.getMax(data);
         System.out.println("highest seat id: " + max); //highest seat number
         System.out.println("lowest seat id: "+ min); //lowest seat number
         int id = -1;

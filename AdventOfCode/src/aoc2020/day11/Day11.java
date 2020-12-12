@@ -1,6 +1,7 @@
 package aoc2020.day11;
 
-import aoc2020.Util;
+import aoc2020.utilities.CommonFunctions;
+import aoc2020.utilities.InputLoader;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,10 +9,8 @@ import java.util.HashSet;
 
 public class Day11 {
     public static void run() {
-        File file = new File("day11.txt");
-        //HashMap<int[], Chair> hall = new HashMap<>(); //keep track of the processed objects
         HashSet<Chair> seats = new HashSet<>();
-        ArrayList<String> input = Util.readFile(file);
+        ArrayList<String> input = InputLoader.asList("day11.txt");
         int[] grid = {input.get(0).length(), input.size()};
         for (int y = 0; y < input.size(); y++) {
             String s = input.get(y);
@@ -22,7 +21,6 @@ public class Day11 {
                 } else if (s.charAt(x) == '#') {
                     seats.add(new Chair(loc, seats, grid, true));
                 }
-                //process the input file into whatever we need
             }
         }
 

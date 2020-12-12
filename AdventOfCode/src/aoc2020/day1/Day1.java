@@ -1,8 +1,7 @@
 package aoc2020.day1;
 
-import aoc2020.Util;
+import aoc2020.utilities.InputLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Day1 {
@@ -10,8 +9,8 @@ public class Day1 {
     public static void run() {
         System.out.println("Solutions day 1:");
         int[] sortedExpenses = new int[2021];
-        File input = new File("day1.txt");
-        for(String s : Util.readFile(input)){
+        ArrayList<String> input = InputLoader.asList("day1.txt");
+        for(String s : input){
             int i = Integer.parseInt(s);
             sortedExpenses[i] = i;
         }
