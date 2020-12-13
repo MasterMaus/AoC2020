@@ -54,25 +54,17 @@ public class Day13 {
     private static long getNextMultiple(long first, long multiple, long increment, long second, int offset) {
         //find integer x where first * x == (second * (int) y) + offset
         long x = multiple;
-        long y = 1;
+
 
         long timestamp = first * x + offset;
-        long timestamp2 = (second * y);
+        long y = timestamp/second;
 
-        while (true) {
-            while(timestamp < timestamp2) {
-                x+=increment;
-                timestamp = first * x + offset;
-            }
-            while (timestamp2 < timestamp) {
-                y++;
-                timestamp2 = second * y;
-            }
-            if(timestamp == timestamp2) {
-                System.out.println("timestamp = " + first * x);
-                return x;
-            }
-
+        while (y*second != timestamp) {
+            x+=increment;
+            timestamp = first * x + offset;
+            y = timestamp/second;
         }
+        System.out.println(timestamp-offset);
+        return x;
     }
 }
