@@ -13,8 +13,6 @@ public class Day13 {
         ArrayList<String> input = InputLoader.asList("input/day13.txt");
         //part1(input);
         part2(input);
-//        int res = 0; // STORE RESULT
-//        System.out.println(res); //OUTPUT RESULT
     }
 
     private static void part1(ArrayList<String> input) {
@@ -35,30 +33,46 @@ public class Day13 {
 
     private static void part2(ArrayList<String> input) {
         String[] departureConstraints = input.get(1).split(",");
-        TreeMap<Integer, Integer> offset = new TreeMap<>(); //<ID, offset>
-        for (int i = 0; i< departureConstraints.length; i++) {
+        TreeMap<Long, Integer> offsetMap = new TreeMap<>(); //<ID, offset>
+        int start = Integer.parseInt(departureConstraints[0]);
+        for (int i = 1; i< departureConstraints.length; i++) {
             if (!departureConstraints[i].equals("x")) {
-                offset.put(Integer.parseInt(departureConstraints[i]), i);
+                offsetMap.put(Long.parseLong(departureConstraints[i]), i);
             }
         }
 
-        System.out.println(getNextCondition(offset));
+        long multiple = 1;
+        long increment = 1;
+        for(long id : offsetMap.keySet()) {
+            multiple = getNextMultiple(start, multiple, increment, id, offsetMap.get(id));
+            increment *= id;
+        }
+
+        //System.out.println(getNextCondition(offset));
     }
 
-    private static long getNextCondition(TreeMap<Integer, Integer> offset) {
-        int highestID = offset.lastKey();
-        //long timestamp = highestID - offset.get(highestID);
-        long timestamp = 100000000000010L;
+    private static long getNextMultiple(long first, long multiple, long increment, long second, int offset) {
+        //find integer x where first * x == (second * (int) y) + offset
+        long x = multiple;
+        long y = 1;
+
+        long timestamp = first * x + offset;
+        long timestamp2 = (second * y);
+
         while (true) {
-            for(int i : offset.keySet()) {
-                if((timestamp + offset.get(i))%i != 0) {
-                    break;
-                }
-                if(i==highestID) {
-                    return timestamp;
-                }
+            while(timestamp < timestamp2) {
+                x+=increment;
+                timestamp = first * x + offset;
             }
-            timestamp += highestID;
+            while (timestamp2 < timestamp) {
+                y++;
+                timestamp2 = second * y;
+            }
+            if(timestamp == timestamp2) {
+                System.out.println("timestamp = " + first * x);
+                return x;
+            }
+
         }
     }
 }
