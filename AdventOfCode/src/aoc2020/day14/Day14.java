@@ -68,7 +68,6 @@ public class Day14 {
                 ArrayList<Long> mems = getAllPossibleValues(maskX, newMem);
 
                 for (long m : mems) {
-                    System.out.println(Long.toBinaryString(m) + " --> " + val);
                     memory.put(m, val);
                 }
                 // keep track of all information
@@ -92,10 +91,10 @@ public class Day14 {
     private static ArrayList<Long> getAllPossibleValues(String mask, long val) {
         ArrayList<Long> res = new ArrayList<>();
         int index = mask.length() - mask.indexOf('X')-1;
-        long val1 = val ^ (1<<index);
+        long val1 = val ^ ((long)1<<index); // CAST 1 to long, because 1 will be an integer. not only will bit 2^33 - 2^36 never flip this way.
+        // bit 2^32 is the sign bit, and this will flip the sign bit of the long for some reason
         mask = mask.replaceFirst("X", "2");
         if (mask.indexOf('X') >= 0) {
-
             res.addAll(getAllPossibleValues(mask, val));
             res.addAll(getAllPossibleValues(mask, val1));
         } else {
