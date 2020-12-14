@@ -7,13 +7,22 @@ import java.util.TreeMap;
 
 public class Day14 {
     public static void run() {
-        long sum = 0;
-        int count = 0;
+
+
+        ArrayList<String> input = InputLoader.asList("input/day14.txt");
+//        TreeMap<Long, Long> part1 = part1(input);
+//        System.out.println(sumOfValues(part1));
+        TreeMap<Long, Long> part2 = part2(input);
+        System.out.println(sumOfValues(part2));
+
+    }
+
+    private static TreeMap<Long, Long> part1(ArrayList<String> input) {
         String mask = "";
         long mask1 = 0; //mask that sets the 1's
         long mask0 = 0; //inverted mask that sets the 0's
-        TreeMap<Integer, Long> memory = new TreeMap<>();
-        ArrayList<String> input = InputLoader.asList("input/day14.txt");
+        TreeMap<Long, Long> memory = new TreeMap<>();
+
         for (String s: input) {
             if(s.contains("mask")) {
                 mask = s.replace("mask = ", "");
@@ -34,14 +43,65 @@ public class Day14 {
                 newValue = ~newValue; //invert back
 
                 // keep track of all information
-                memory.put(Integer.parseInt(data[0].replace("mem[", "")), newValue);
+                memory.put(Long.parseLong(data[0].replace("mem[", "")), newValue);
 //                System.out.println(Long.toBinaryString(newValue));
             }
-            //process the input file into whatever we need
         }
+
+        return memory;
+    }
+
+    private static TreeMap<Long, Long> part2(ArrayList<String> input) {
+        TreeMap<Long, Long> memory = new TreeMap<>(); // <memory location, actual data>
+
+        String maskX = "";
+        long mask = 0;
+                for (String s: input) {
+            if(s.contains("mask")) {
+                maskX = s.replace("mask = ", "");
+                mask = Long.parseLong(maskX.replace("X", "1"),2);
+            } else {
+                String data[] = s.split("] = ");
+                long val = Long.parseLong(data[1]);
+                long newMem = Long.parseLong(data[0].replace("mem[", "")); // parse the memory pointer from input
+                newMem |= mask;
+                ArrayList<Long> mems = getAllPossibleValues(maskX, newMem);
+
+                for (long m : mems) {
+                    System.out.println(Long.toBinaryString(m) + " --> " + val);
+                    memory.put(m, val);
+                }
+                // keep track of all information
+//                System.out.println(Long.toBinaryString(newValue));
+            }
+        }
+
+        return memory;
+    }
+
+    private static long sumOfValues(TreeMap<Long, Long> memory) {
+        long sum = 0;
+
+
         for (long l : memory.values()) {
             sum += l;
         }
-        System.out.println(sum);
+        return sum;
+    }
+
+    private static ArrayList<Long> getAllPossibleValues(String mask, long val) {
+        ArrayList<Long> res = new ArrayList<>();
+        int index = mask.length() - mask.indexOf('X')-1;
+        long val1 = val ^ (1<<index);
+        mask = mask.replaceFirst("X", "2");
+        if (mask.indexOf('X') >= 0) {
+
+            res.addAll(getAllPossibleValues(mask, val));
+            res.addAll(getAllPossibleValues(mask, val1));
+        } else {
+            res.add(val);
+            res.add(val1);
+        }
+        return res;
     }
 }
