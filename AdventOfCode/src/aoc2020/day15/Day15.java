@@ -9,25 +9,27 @@ import java.util.TreeMap;
 
 public class Day15 {
     public static void run() {
+        int roundLimit = 30000000;
         HashMap<Integer, int[]> numberList = new HashMap<>(); //map <number, array of last occured indexes of the number>
         int lastNumber = 0;
         int roundNumber = 0;
-        String input = InputLoader.asString("input/day15.txt");
-        for (String s: input.split(",")) {
+
+        String input = InputLoader.asString("input/day15.txt"); //read input
+        for (String s: input.split(",")) { //initialize the starting sequence
             roundNumber++;
             int[] lastOccurrances = {0,roundNumber};
-            System.out.println(s);
             lastNumber = Integer.parseInt(s);
             numberList.put(lastNumber, lastOccurrances);
         }
 
-        while(roundNumber < 30000000) {
+        //calculate next numbers until its enough :)
+        while(roundNumber < roundLimit) {
             roundNumber++;
             lastNumber = nextNumber(numberList, lastNumber, roundNumber);
         }
 
-
-        System.out.println(lastNumber); //OUTPUT RESULT
+        //result
+        System.out.println("the number spoken on round " + roundNumber + " is: " + lastNumber); //OUTPUT RESULT
     }
 
     private static int nextNumber(HashMap<Integer, int[]> numberList, int lastNumber, int roundNumber) {
