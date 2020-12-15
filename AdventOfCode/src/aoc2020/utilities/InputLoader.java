@@ -25,11 +25,11 @@ public class InputLoader {
     }
 
     public static String asString(String filepath) {
-        String output = new String();
+        String output = "";
         File file = new File(filepath);
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
-                output.concat(scanner.nextLine());
+                output = output.concat(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

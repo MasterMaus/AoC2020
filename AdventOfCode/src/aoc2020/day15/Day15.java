@@ -4,17 +4,19 @@ import aoc2020.utilities.InputLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.TreeMap;
 
 public class Day15 {
     public static void run() {
-        TreeMap<Integer, int[]> numberList = new TreeMap<>(); //map <number, array of last occured indexes of the number>
+        HashMap<Integer, int[]> numberList = new HashMap<>(); //map <number, array of last occured indexes of the number>
         int lastNumber = 0;
         int roundNumber = 0;
         String input = InputLoader.asString("input/day15.txt");
         for (String s: input.split(",")) {
             roundNumber++;
             int[] lastOccurrances = {0,roundNumber};
+            System.out.println(s);
             lastNumber = Integer.parseInt(s);
             numberList.put(lastNumber, lastOccurrances);
         }
@@ -28,7 +30,7 @@ public class Day15 {
         System.out.println(lastNumber); //OUTPUT RESULT
     }
 
-    private static int nextNumber(TreeMap<Integer, int[]> numberList, int lastNumber, int roundNumber) {
+    private static int nextNumber(HashMap<Integer, int[]> numberList, int lastNumber, int roundNumber) {
         int newNumber = 0;
         int[] lastOccurances = numberList.get(lastNumber);
         if(lastOccurances[0] == 0) {
