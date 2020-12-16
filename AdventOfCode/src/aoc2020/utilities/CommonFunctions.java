@@ -82,4 +82,19 @@ public class CommonFunctions {
         return x + y;
     }
 
+    public static boolean inRange(int val, int min, int max) {
+        if(val >= min && val <= max) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean inRange(long val, long min, long max) {
+        if(val >= min && val <= max) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
