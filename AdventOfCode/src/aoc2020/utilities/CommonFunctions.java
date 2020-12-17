@@ -47,10 +47,18 @@ public class CommonFunctions {
         return res;
     }
     public static int getMax(Collection<Integer> input) {
-        return Collections.max(input);
+        if(input != null) {
+            return Collections.max(input);
+        } else {
+            return 0;
+        }
     }
     public static int getMin(Collection<Integer> input) {
-        return Collections.min(input);
+        if(input != null) {
+            return Collections.min(input);
+        } else {
+            return 0;
+        }
     }
 
     // calculate manhattan distance
