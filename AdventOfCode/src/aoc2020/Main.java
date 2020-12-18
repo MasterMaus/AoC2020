@@ -1,12 +1,30 @@
 package aoc2020;
 
+import aoc2020.day1.Day1;
+
+import aoc2020.day2.Day2;
+import aoc2020.day3.Day3;
+import aoc2020.day4.Day4;
+import aoc2020.day5.Day5;
+import aoc2020.day6.Day6;
+import aoc2020.day7.Day7;
+import aoc2020.day8.Day8;
+import aoc2020.day9.Day9;
+import aoc2020.day10.Day10;
+import aoc2020.day11.Day11;
+import aoc2020.day12.Day12;
+import aoc2020.day13.Day13;
+import aoc2020.day14.Day14;
+import aoc2020.day15.Day15;
+import aoc2020.day16.Day16;
 import aoc2020.day17.Day17;
+import aoc2020.day18.Day18;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
+        long start;
 //        Day1.run(); //run day1
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
@@ -70,13 +88,13 @@ public class Main {
 //        Day16.run(); //run day16
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
-        start = System.currentTimeMillis();
-        Day17.run(); //run day17
-        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
-//
 //        start = System.currentTimeMillis();
-//        Day18.run(); //run day18
+//        Day17.run(); //run day17
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
+//
+        start = System.currentTimeMillis();
+        Day18.run(); //run day18
+        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
 //        Day19.run(); //run day19
