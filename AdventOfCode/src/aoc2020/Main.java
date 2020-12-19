@@ -1,7 +1,6 @@
 package aoc2020;
 
 import aoc2020.day1.Day1;
-
 import aoc2020.day2.Day2;
 import aoc2020.day3.Day3;
 import aoc2020.day4.Day4;
@@ -19,6 +18,7 @@ import aoc2020.day15.Day15;
 import aoc2020.day16.Day16;
 import aoc2020.day17.Day17;
 import aoc2020.day18.Day18;
+import aoc2020.day19.Day19;
 
 
 public class Main {
@@ -92,13 +92,13 @@ public class Main {
 //        Day17.run(); //run day17
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
-        start = System.currentTimeMillis();
-        Day18.run(); //run day18
-        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
-//
 //        start = System.currentTimeMillis();
-//        Day19.run(); //run day19
+//        Day18.run(); //run day18
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
+//
+        start = System.currentTimeMillis();
+        Day19.run(); //run day19
+        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
 //        Day20.run(); //run day20

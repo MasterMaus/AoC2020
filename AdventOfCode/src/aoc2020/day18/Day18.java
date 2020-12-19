@@ -10,7 +10,6 @@ public class Day18 {
         long sum = 0;
         ArrayList<String> input = InputLoader.asList("input/day18.txt");
         for (String s: input) {
-            System.out.println(calculate(s));
             sum += calculateV2(s);
         }
         System.out.println(sum);
