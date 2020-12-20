@@ -4,11 +4,12 @@ public class Coordinate {
 
     private int x, y, z, w;
 
+    public Coordinate(int x, int y) {
+        this(x,y,0,0);
+    }
+
     public Coordinate(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.w = 0;
+        this(x,y,z,0);
     }
 
     public Coordinate(int x, int y, int z, int w) {
