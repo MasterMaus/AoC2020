@@ -23,12 +23,17 @@ public class InputLoader {
         return output;
     }
 
-    public static String asString(String filepath) {
+    public static String asString(String filepath, String delimiter) {
         String output = "";
         File file = new File(filepath);
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
-                output = output.concat(scanner.nextLine());
+                String nextLine = scanner.nextLine();
+                if(nextLine.isEmpty()) {
+                    output = output + "\n";
+                } else {
+                    output = output + nextLine + delimiter;
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -36,5 +41,4 @@ public class InputLoader {
         }
         return output;
     }
-
 }

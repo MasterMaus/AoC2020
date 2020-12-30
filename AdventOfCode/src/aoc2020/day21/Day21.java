@@ -24,7 +24,8 @@ public class Day21 {
                     allergen2Ingredients.get(allergen).retainAll(ingredientList);
                     // retain all from both sets, point to new set
                 } else {
-                    allergen2Ingredients.put(allergen, ingredientList);
+                    allergen2Ingredients.put(allergen, new TreeSet<>(ingredientList));
+                    //System.out.println(allergen);
                 }
             }
 
@@ -38,13 +39,16 @@ public class Day21 {
             allIngredients.removeAll(allergen2Ingredients.get(allergen));
         }
         System.out.println(allIngredients.size());
-        System.out.println(allIngredients.contains("nhdjth"));
+
+        //System.out.println(allIngredients.contains("nhdjth"));
     }
 
     private static TreeSet<String> parseIngredients(String ingredientList, String regex) {
         TreeSet<String> res = new TreeSet<>();
+        //System.out.println(ingredientList);
         for(String ingredient : ingredientList.split(regex)) {
             res.add(ingredient);
+            //System.out.println(ingredient);
         }
 
         return res;

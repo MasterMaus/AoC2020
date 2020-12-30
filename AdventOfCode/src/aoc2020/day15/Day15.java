@@ -14,7 +14,7 @@ public class Day15 {
         int lastNumber = 0;
         int roundNumber = 0;
 
-        String input = InputLoader.asString("input/day15.txt"); //read input
+        String input = InputLoader.asString("input/day15.txt", ""); //read input
         for (String s: input.split(",")) { //initialize the starting sequence
             roundNumber++;
             int[] lastOccurrances = {0,roundNumber};

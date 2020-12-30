@@ -2,6 +2,8 @@ package aoc2020;
 
 import aoc2020.day1.Day1;
 import aoc2020.day2.Day2;
+import aoc2020.day24.Day24;
+import aoc2020.day25.Day25;
 import aoc2020.day3.Day3;
 import aoc2020.day4.Day4;
 import aoc2020.day5.Day5;
@@ -21,6 +23,10 @@ import aoc2020.day18.Day18;
 import aoc2020.day19.Day19;
 import aoc2020.day20.Day20;
 import aoc2020.day21.Day21;
+import aoc2020.day22.Day22;
+import aoc2020.day22.Day22_2;
+import aoc2020.day23.Day23;
+import aoc2020.jurassic_jigsaw.JurassicJigsaw;
 
 public class Main {
 
@@ -104,13 +110,18 @@ public class Main {
 //        start = System.currentTimeMillis();
 //        Day20.run(); //run day20
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
-//
+
         start = System.currentTimeMillis();
-        Day21.run(); //run day21
+        JurassicJigsaw.run("input/day20.txt");
         System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
+//        Day21.run(); //run day21
+//        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
+//
+//        start = System.currentTimeMillis();
 //        Day22.run(); //run day22
+//        new Day22_2();
 //        System.out.println("solution has been solved in " + (System.currentTimeMillis() - start) + "ms \n");
 //
 //        start = System.currentTimeMillis();
